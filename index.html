@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Saramel</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- =====================================================
+     POPUP NEWSLETTER
+====================================================== -->
+
+<div class="newsletter-overlay" id="newsletterPopup">
+
+    <div class="newsletter-modal">
+
+        <!-- BOUTON FERMER -->
+        <button
+            class="newsletter-close"
+            id="newsletterClose"
+            type="button"
+            aria-label="Fermer"
+        >
+            ×
+        </button>
+
+
+        <!-- CONTENU -->
+        <div class="newsletter-content">
+
+            <h2>
+                Bienvenue chez Saramel
+            </h2>
+
+            <p class="newsletter-description">
+                Rejoignez notre newsletter et recevez
+                <strong>-10%</strong> avec le code
+                <strong>SARAMEL10</strong>.
+                Nouveautés et douceurs au rendez-vous !
+            </p>
+
+
+            <!-- BOUTON SHOP -->
+            <button
+                type="button"
+                class="newsletter-shop-button"
+            >
+                Claim with <strong>shop</strong>
+            </button>
+
+
+            <!-- SEPARATEUR -->
+            <div class="newsletter-separator">
+                <span></span>
+                <em>or</em>
+                <span></span>
+            </div>
+
+
+            <!-- FORMULAIRE -->
+            <form id="newsletterForm">
+
+                <div class="newsletter-field">
+
+                    <input
+                        type="email"
+                        id="newsletterEmail"
+                        placeholder="E-mail"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="newsletter-field">
+
+                    <input
+                        type="text"
+                        id="newsletterFirstName"
+                        placeholder="Prénom"
+                    >
+
+                </div>
+
+
+                <div class="newsletter-field">
+
+                    <input
+                        type="text"
+                        id="newsletterLastName"
+                        placeholder="Nom"
+                    >
+
+                </div>
+
+
+                <!-- TELEPHONE -->
+                <div class="newsletter-phone">
+
+                    <button
+                        type="button"
+                        class="country-code"
+                    >
+                        🇬🇧
+                        <span>⌄</span>
+                    </button>
+
+                    <input
+                        type="tel"
+                        placeholder="Téléphone +44"
+                    >
+
+                </div>
+
+
+                <!-- ANNIVERSAIRE -->
+                <label class="birthday-label">
+                    Anniversaire
+                </label>
+
+                <div class="birthday-fields">
+
+                    <input
+                        type="text"
+                        placeholder="DD"
+                        maxlength="2"
+                    >
+
+                    <input
+                        type="text"
+                        placeholder="MM"
+                        maxlength="2"
+                    >
+
+                    <input
+                        type="text"
+                        placeholder="YYYY"
+                        maxlength="4"
+                    >
+
+                </div>
+
+
+                <!-- BOUTON -->
+                <button
+                    type="submit"
+                    class="newsletter-submit"
+                >
+                    Soumettre
+                </button>
+
+            </form>
+
+
+            <!-- TEXTE LEGAL -->
+            <p class="newsletter-legal">
+
+                En vous inscrivant, vous acceptez de recevoir
+                des messages de marketing au numéro de téléphone
+                ou à l'adresse e-mail fournis.
+                Des frais de messagerie et de données peuvent
+                s'appliquer.
+
+                <br>
+
+                Affichez notre politique de confidentialité
+                et nos conditions de service pour en savoir plus.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<body>
+
+    <!-- =====================================================
+         TOP BAR
+    ====================================================== -->
+
+    <div class="top-bar">
+
+        <span>Free delivery on orders over €90!</span>
+        <b>✦</b>
+
+        <span>Enjoy 10% off your first order with code saramel10</span>
+        <b>✦</b>
+
+        <span>Free delivery on orders over €90!</span>
+        <b>✦</b>
+
+        <span>Enjoy 10% off your first order with code saramel10</span>
+        <b>✦</b>
+
+    </div>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <!-- LOGO -->
+
+        <div class="logo">
+            <img
+                src="WhatsApp Image 2025-05-16 at 16.34.40.jpeg"
+                alt="Saramel"
+            >
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav>
+
+            
+
+    
+
+    <a href="common-dates.html">COMMON DATES</a>
+
+    <a href="natural-dates.html">NATURAL DATES</a>
+
+    <a href="dates-ingredients.html">Dates Ingredients</a>
+
+    <a href="gift-boxes.html">Gift Boxes</a>
+
+
+   <a href="chocolate-dates.html">Chocolate Dates</a>
+
+
+    <a href="contact.html">Contact Us</a>
+
+
+</nav>
+
+
+        
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="right">
+
+            <div class="language">
+                🇬🇧 English⌄
+            </div>
+
+
+            <div class="search">
+
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    placeholder="I'm looking for..."
+                >
+
+            </div>
+
+
+            <div class="user">
+                ♙
+            </div>
+
+
+            <div class="basket">
+
+                🛍
+
+                <small>0</small>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero">
+
+        <video
+            autoplay
+            muted
+            loop
+            playsinline
+        >
+
+            <source
+                src="saramelvideo.mp4"
+                type="video/mp4"
+            >
+
+            Your browser does not support the video tag.
+
+        </video>
+
+
+        <div class="overlay"></div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DISCOVER SECTION
+    ====================================================== -->
+
+    <section class="discover">
+
+
+        <!-- TITLE -->
+
+        <div class="discover-header">
+
+            <h1>
+                Welcome to saramel: The Art of Date Tasting
+            </h1>
+
+            <p>
+                Discover the world of luxury dates. Each creation is carefully
+                selected and handcrafted, combining tradition with artisanal
+                expertise. Treat yourself to a unique tasting experience for
+                every occasion.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             FLEXBOX PRINCIPAL
+        ================================================== -->
+
+        <div class="discover-grid">
+
+
+            <!-- =================================================
+                 COLONNE GAUCHE
+            ================================================== -->
+
+            <div class="discover-card card-left">
+
+                <img
+                    src="Gift box personalizada com chocolates premium — presente corporativo Construtoras.jpeg"
+                    alt="Luxury dates and nuts"
+                >
+
+                <div class="card-content">
+
+                    <span>
+                        Gift Boxes
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 COLONNE CENTRALE
+            ================================================== -->
+
+            <div class="discover-center">
+
+
+                <!-- IMAGE CENTRALE HAUTE -->
+
+                <div class="discover-card card-dates">
+
+                    <img
+                        src="298+ Luxury Cookies & Biscuit Packaging Ideas.jpeg"
+                    >
+
+                    <div class="card-content">
+
+                        <span>
+                            Dates
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE CENTRALE BASSE -->
+
+                <div class="discover-card card-box">
+
+                    <img
+                        src="_ (2) copie.jpeg"
+                    >
+
+                    <div class="card-content">
+
+                        <span>
+                            Gift Boxes
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 COLONNE DROITE
+            ================================================== -->
+
+            <div class="discover-card card-palm">
+
+                <img
+                    src="Royal Blue Luxury Baby First Birthday Favor Box _ Premium Return Gift Ideas for Friends & Family.jpeg"
+                >
+
+                <div class="card-content">
+
+                    <span>
+                        Natural Dates
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    
+    </section>
+
+
+    <!-- =====================================================
+         CERTIFICATIONS
+    ====================================================== -->
+
+    <section class="certifications">
+
+        <div class="certifications-header">
+
+            <span>OUR QUALITY</span>
+
+            <h2>Our Certifications</h2>
+
+            <p>
+                We carefully select our products to guarantee quality,
+                authenticity and respect for our customers.
+            </p>
+
+        </div>
+
+
+        <div class="certifications-grid">
+
+            <div class="certification">
+                <img
+                    src="Компот из сухофруктов, 1 л (ТТК0508) технологическая карта.jpeg"
+                >
+            </div>
+
+
+            <div class="certification">
+                <img
+                    src="Компот из сухофруктов, 1 л (ТТК0508) технологическая карта.jpeg"
+                    alt="Product Certification"
+                >
+            </div>
+
+
+            <div class="certification">
+                <img
+                    src="Saintes-Maries-de-la-Mer.jpeg"
+                    alt="Saintes-Maries-de-la-Mer Certification"
+                >
+            </div>
+
+
+            <div class="certification">
+                <img
+                    src="Private Label.jpeg"
+                    alt="Private Label Certification"
+                >
+            </div>
+
+
+            <div class="certification">
+                <img
+                    src="Fda Approved Minimalist Medical Seal Emblem Sticker.jpeg"
+                    alt="FDA Approved Certification"
+                >
+            </div>
+
+
+            <div class="certification">
+                <img
+                    src="Fda Approved Minimalist Medical Seal Emblem Sticker.jpeg"
+                    alt="FDA Approved Certification"
+                >
+
+        </div>
+
+    </section>
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <!-- =============================================
+                 CUSTOMER SERVICE
+            ============================================== -->
+
+            <div class="footer-column footer-contact">
+
+                <h3>Customer Service</h3>
+
+                <p>
+                    Find a point of sale near you to reduce delivery costs
+                    and make your purchases easier.
+                </p>
+
+                <div class="footer-address">
+                    <span>58 Fraternity Street, Romainville</span>
+                    <span>01 41 50 84 93</span>
+                    <span>contact@saramel.com</span>
+                </div>
+
+                <a href="#" class="follow-button">
+                    ♡ &nbsp; Follow on shop
+                </a>
+
+                <div class="socials">
+
+                    <a href="#" aria-label="Facebook">f</a>
+
+                    <a href="#" aria-label="Instagram">◎</a>
+
+                    <a href="#" aria-label="TikTok">♪</a>
+
+                </div>
+
+            </div>
+
+
+            <!-- =============================================
+                 MENU
+            ============================================== -->
+
+            <div class="footer-column">
+
+                <h3>Menu</h3>
+
+                <a href="gift-boxes.html">Gift Boxes</a>
+
+                <a href="dates-ingredients.html">
+                    Fine Foods
+                </a>
+
+                <a href="natural-dates.html">
+                    Natural Dates
+                </a>
+
+                <a href="common-dates.html">
+                    Drinks
+                </a>
+
+                <a href="#">
+                    Events
+                </a>
+
+                <a href="organic-dates.html">
+                    Coated Dates
+                </a>
+
+                <a href="#">
+                    Our Stores
+                </a>
+
+            </div>
+
+
+            <!-- =============================================
+                 LEARN MORE
+            ============================================== -->
+
+            <div class="footer-column">
+
+                <h3>Learn more</h3>
+
+                <a href="#">
+                    The Saramel Journal
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="#">
+                    About Us
+                </a>
+
+                <a href="#">
+                    Legal Notice
+                </a>
+
+                <a href="#">
+                    Terms and Conditions of Sale
+                </a>
+
+                <a href="#">
+                    Terms of Use
+                </a>
+
+                <a href="#">
+                    Privacy Policy
+                </a>
+
+                <a href="#">
+                    Right of Withdrawal
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =============================================
+             FOOTER BOTTOM
+        ============================================== -->
+
+        <div class="footer-bottom">
+
+            <div class="copyright">
+                © 2026 Saramel.
+            </div>
+
+
+            <div class="payment-methods">
+
+                <span class="payment amex">AMEX</span>
+                <span class="payment apple">Pay</span>
+                <span class="payment visa">VISA</span>
+                <span class="payment blik">blik</span>
+                <span class="payment eps">eps</span>
+                <span class="payment klarna">Klarna</span>
+                <span class="payment mastercard">●●</span>
+                <span class="payment paypal">P</span>
+                <span class="payment shop">shop</span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         CHAT
+    ====================================================== -->
+
+    <button
+        class="chat"
+        type="button"
+    >
+
+        ♡ &nbsp; Chat
+
+    </button>
+
+
+    <!-- RETOUR EN HAUT -->
+
+    <button
+        class="back-to-top"
+        type="button"
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        aria-label="Retour en haut"
+    >
+        ↑
+    </button>
+
+
+    
+
+
+
+    <script>
+
+    const newsletterPopup =
+        document.getElementById("newsletterPopup");
+
+    const newsletterClose =
+        document.getElementById("newsletterClose");
+
+    const newsletterForm =
+        document.getElementById("newsletterForm");
+
+
+    /* =====================================================
+       OUVRIR LA POPUP
+    ====================================================== */
+
+    window.addEventListener("load", function () {
+
+        setTimeout(function () {
+
+            newsletterPopup.classList.add("active");
+
+        }, 1000);
+
+    });
+
+
+    /* =====================================================
+       FERMER AVEC X
+    ====================================================== */
+
+    newsletterClose.addEventListener("click", function () {
+
+        newsletterPopup.classList.remove("active");
+
+    });
+
+
+    /* =====================================================
+       FERMER EN CLIQUANT SUR LE FOND
+    ====================================================== */
+
+    newsletterPopup.addEventListener("click", function (event) {
+
+        if (event.target === newsletterPopup) {
+
+            newsletterPopup.classList.remove("active");
+
+        }
+
+    });
+
+
+    /* =====================================================
+       FERMER AVEC ESC
+    ====================================================== */
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+
+            newsletterPopup.classList.remove("active");
+
+        }
+
+    });
+
+
+    /* =====================================================
+       FORMULAIRE
+    ====================================================== */
+
+    newsletterForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        alert("Merci ! Votre inscription a bien été prise en compte.");
+
+        newsletterPopup.classList.remove("active");
+
+    });
+
+</script>
+
+
+
+</body>
+</html>

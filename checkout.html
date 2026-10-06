@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Checkout | Saramel</title>
+
+    <link
+        rel="stylesheet"
+        href="common-dates.css"
+    >
+
+    <style>
+
+        .checkout-page {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 0 100px;
+        }
+
+        .checkout-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .checkout-title h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 40px;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        .checkout-title p {
+            color: #777;
+            font-size: 12px;
+        }
+
+        .checkout-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .checkout-section {
+            margin-bottom: 35px;
+        }
+
+        .checkout-section h2 {
+            margin-bottom: 22px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 22px;
+            font-weight: normal;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            color: #333;
+            font-size: 11px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            height: 42px;
+            padding: 0 12px;
+
+            border: 1px solid #d8d8d8;
+            background: white;
+
+            outline: none;
+
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #3e443c;
+        }
+
+        .order-summary {
+            padding: 28px;
+            background: #f8f7f2;
+        }
+
+        .order-summary h2 {
+            margin-bottom: 25px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 22px;
+            font-weight: normal;
+        }
+
+        .summary-product {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding: 14px 0;
+
+            border-bottom: 1px solid #ddd;
+        }
+
+        .summary-product-image {
+            width: 65px;
+            height: 65px;
+
+            flex-shrink: 0;
+
+            background: #eee;
+            overflow: hidden;
+        }
+
+        .summary-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .summary-product-info {
+            flex: 1;
+        }
+
+        .summary-product-info h3 {
+            margin-bottom: 5px;
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        .summary-product-info p {
+            color: #777;
+            font-size: 10px;
+        }
+
+        .summary-product-price {
+            font-size: 11px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+
+            margin-top: 18px;
+
+            color: #555;
+            font-size: 11px;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+
+            margin-top: 20px;
+            padding-top: 18px;
+
+            border-top: 1px solid #ccc;
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 20px;
+        }
+
+        .payment-note {
+            margin-top: 20px;
+            padding: 12px;
+
+            background: #fff;
+
+            color: #777;
+            font-size: 9px;
+            line-height: 1.6;
+        }
+
+        .payment-button {
+            width: 100%;
+
+            margin-top: 22px;
+            padding: 14px;
+
+            border: none;
+
+            background: #3e443c;
+            color: white;
+
+            font-size: 11px;
+
+            cursor: pointer;
+        }
+
+        .payment-button:hover {
+            background: #c9a548;
+        }
+
+        .empty-checkout {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .empty-checkout h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        .empty-checkout a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+
+            background: #3e443c;
+            color: white;
+
+            text-decoration: none;
+            font-size: 11px;
+        }
+
+        @media (max-width: 800px) {
+
+            .checkout-layout {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .checkout-page {
+                width: 92%;
+                padding-top: 45px;
+            }
+
+            .checkout-title h1 {
+                font-size: 32px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         TOP BAR
+    ====================================================== -->
+
+    <div class="top-bar">
+
+        <span>
+            Free delivery on orders over £90!
+        </span>
+
+        <b>✦</b>
+
+        <span>
+            Enjoy 10% off your first order with code saramel10
+        </span>
+
+        <b>✦</b>
+
+        <span>
+            Free delivery on orders over £90!
+        </span>
+
+    </div>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <div class="logo">
+
+            <a href="index.html">
+
+                <img
+                    src="WhatsApp Image 2025-05-16 at 16.34.40.jpeg"
+                    alt="Saramel"
+                >
+
+            </a>
+
+        </div>
+
+
+        <nav>
+
+            <a href="organic-dates.html">
+                ORGANIC DATES
+            </a>
+
+            <a href="common-dates.html">
+                COMMON DATES
+            </a>
+
+            <a href="natural-dates.html">
+                Natural Dates
+            </a>
+
+            <a href="dates-ingredients.html">
+                Dates Ingredients
+            </a>
+
+            <a href="gift-boxes.html">
+                Gift Boxes
+            </a>
+
+            <a href="chocolate-dates.html">
+                Chocolate Dates
+            </a>
+
+            <a href="contact.html">
+                Contact Us
+            </a>
+
+        </nav>
+
+
+        <div class="right">
+
+            <div class="language">
+                🇬🇧 English⌄
+            </div>
+
+            <div class="search">
+
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    placeholder="I'm looking for..."
+                >
+
+            </div>
+
+            <div class="user">
+                ♙
+            </div>
+
+            <div
+                class="basket"
+                style="cursor: pointer;"
+            >
+
+                🛍
+
+                <small id="cartCount">
+                    0
+                </small>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         CHECKOUT
+    ====================================================== -->
+
+    <main class="checkout-page">
+
+
+        <div class="checkout-title">
+
+            <h1>
+                Checkout
+            </h1>
+
+            <p>
+                Enter your delivery information to continue.
+            </p>
+
+        </div>
+
+
+        <div
+            id="emptyCheckout"
+            class="empty-checkout"
+            style="display: none;"
+        >
+
+            <h2>
+                Your cart is empty
+            </h2>
+
+            <p>
+                Please add a product before checking out.
+            </p>
+
+            <a href="common-dates.html">
+                Continue Shopping
+            </a>
+
+        </div>
+
+
+        <div
+            id="checkoutContent"
+            class="checkout-layout"
+        >
+
+
+            <!-- =================================================
+                 CUSTOMER INFORMATION
+            ================================================== -->
+
+            <section>
+
+
+                <div class="checkout-section">
+
+                    <h2>
+                        Contact Information
+                    </h2>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="your@email.com"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="checkout-section">
+
+                    <h2>
+                        Delivery Address
+                    </h2>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="firstName">
+                                First name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="firstName"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="lastName">
+                                Last name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="lastName"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="address">
+                            Address
+                        </label>
+
+                        <input
+                            type="text"
+                            id="address"
+                            placeholder="Street and house number"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="postcode">
+                                Postcode
+                            </label>
+
+                            <input
+                                type="text"
+                                id="postcode"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="city">
+                                City
+                            </label>
+
+                            <input
+                                type="text"
+                                id="city"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="country">
+                            Country
+                        </label>
+
+                        <select id="country">
+
+                            <option value="">
+                                Select a country
+                            </option>
+
+                            <option value="GB">
+                                United Kingdom
+                            </option>
+
+                            <option value="FR">
+                                France
+                            </option>
+
+                            <option value="BE">
+                                Belgium
+                            </option>
+
+                            <option value="DE">
+                                Germany
+                            </option>
+
+                            <option value="ES">
+                                Spain
+                            </option>
+
+                            <option value="IT">
+                                Italy
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =================================================
+                 ORDER SUMMARY
+            ================================================== -->
+
+            <aside class="order-summary">
+
+                <h2>
+                    Your Order
+                </h2>
+
+
+                <div id="summaryProducts"></div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="checkoutSubtotal">
+                        £0.00
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Delivery
+                    </span>
+
+                    <span id="deliveryPrice">
+                        £0.00
+                    </span>
+
+                </div>
+
+
+                <div class="summary-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="checkoutTotal">
+                        £0.00
+                    </strong>
+
+                </div>
+
+
+                <div class="payment-note">
+
+                    Your payment information will be handled
+                    securely by the payment provider.
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="payment-button"
+                    id="paymentButton"
+                >
+                    Continue to Payment
+                </button>
+
+            </aside>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+
+                let cart =
+                    JSON.parse(
+                        localStorage.getItem("saramelCart")
+                    ) || [];
+
+
+                const checkoutContent =
+                    document.getElementById(
+                        "checkoutContent"
+                    );
+
+
+                const emptyCheckout =
+                    document.getElementById(
+                        "emptyCheckout"
+                    );
+
+
+                const summaryProducts =
+                    document.getElementById(
+                        "summaryProducts"
+                    );
+
+
+                const checkoutSubtotal =
+                    document.getElementById(
+                        "checkoutSubtotal"
+                    );
+
+
+                const checkoutTotal =
+                    document.getElementById(
+                        "checkoutTotal"
+                    );
+
+
+                const cartCount =
+                    document.getElementById(
+                        "cartCount"
+                    );
+
+
+                const paymentButton =
+                    document.getElementById(
+                        "paymentButton"
+                    );
+
+
+                // =================================================
+                // PANIER VIDE
+                // =================================================
+
+                if (cart.length === 0) {
+
+                    checkoutContent.style.display =
+                        "none";
+
+                    emptyCheckout.style.display =
+                        "block";
+
+                    return;
+
+                }
+
+
+                // =================================================
+                // COMPTEUR
+                // =================================================
+
+                const totalQuantity =
+                    cart.reduce(
+                        function (total, product) {
+
+                            return total +
+                                product.quantity;
+
+                        },
+                        0
+                    );
+
+
+                cartCount.textContent =
+                    totalQuantity;
+
+
+                // =================================================
+                // AFFICHER LES PRODUITS
+                // =================================================
+
+                let subtotal = 0;
+
+
+                cart.forEach(
+                    function (product) {
+
+                        subtotal +=
+                            product.price *
+                            product.quantity;
+
+
+                        const productElement =
+                            document.createElement("div");
+
+
+                        productElement.className =
+                            "summary-product";
+
+
+                        productElement.innerHTML = `
+
+                            <div class="summary-product-image">
+
+                                <img
+                                    src="${product.image}"
+                                    alt="${product.name}"
+                                >
+
+                            </div>
+
+
+                            <div class="summary-product-info">
+
+                                <h3>
+                                    ${product.name}
+                                </h3>
+
+                                <p>
+                                    Quantity: ${product.quantity}
+                                </p>
+
+                            </div>
+
+
+                            <div class="summary-product-price">
+
+                                £${(
+                                    product.price *
+                                    product.quantity
+                                ).toFixed(2)}
+
+                            </div>
+
+                        `;
+
+
+                        summaryProducts.appendChild(
+                            productElement
+                        );
+
+                    }
+                );
+
+
+                // =================================================
+                // LIVRAISON
+                // =================================================
+
+                let delivery = 0;
+
+
+                if (subtotal < 90) {
+
+                    delivery = 5;
+
+                }
+
+
+                // =================================================
+                // TOTAL
+                // =================================================
+
+                const total =
+                    subtotal + delivery;
+
+
+                checkoutSubtotal.textContent =
+                    "£" + subtotal.toFixed(2);
+
+
+                document.getElementById(
+                    "deliveryPrice"
+                ).textContent =
+                    "£" + delivery.toFixed(2);
+
+
+                checkoutTotal.textContent =
+                    "£" + total.toFixed(2);
+
+
+                // =================================================
+                // PANIER
+                // =================================================
+
+                const basket =
+                    document.querySelector(
+                        ".basket"
+                    );
+
+
+                if (basket) {
+
+                    basket.addEventListener(
+                        "click",
+                        function () {
+
+                            window.location.href =
+                                "cart.html";
+
+                        }
+                    );
+
+                }
+
+
+                // =================================================
+                // CONTINUER VERS LE PAIEMENT
+                // =================================================
+
+                paymentButton.addEventListener(
+                    "click",
+                    function () {
+
+
+                        const email =
+                            document.getElementById(
+                                "email"
+                            ).value.trim();
+
+
+                        const firstName =
+                            document.getElementById(
+                                "firstName"
+                            ).value.trim();
+
+
+                        const lastName =
+                            document.getElementById(
+                                "lastName"
+                            ).value.trim();
+
+
+                        const address =
+                            document.getElementById(
+                                "address"
+                            ).value.trim();
+
+
+                        const postcode =
+                            document.getElementById(
+                                "postcode"
+                            ).value.trim();
+
+
+                        const city =
+                            document.getElementById(
+                                "city"
+                            ).value.trim();
+
+
+                        const country =
+                            document.getElementById(
+                                "country"
+                            ).value;
+
+
+                        if (
+                            !email ||
+                            !firstName ||
+                            !lastName ||
+                            !address ||
+                            !postcode ||
+                            !city ||
+                            !country
+                        ) {
+
+                            alert(
+                                "Please complete all required fields."
+                            );
+
+                            return;
+
+                        }
+
+
+                        alert(
+                            "Your information is complete. The secure payment system will be connected in the next step."
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
